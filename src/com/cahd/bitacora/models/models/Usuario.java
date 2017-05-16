@@ -12,7 +12,7 @@ public class Usuario {
     private final StringProperty apPaterno;
     private final StringProperty apMaterno;
 
-    public Usuario(){
+    public Usuario(String id, String nombre, String apellidoPaterno, String apellidoMaterno){
         this(null,null,null,null,null);
     }
 
