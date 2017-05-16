@@ -9,6 +9,7 @@ import javafx.beans.property.StringProperty;
  * Created by charly on 09/05/2017.
  */
 /*EJEMPLO DE CAMBIO SIN ACTUALIZAR*/
+//hola soy cheno
 
 public class Alumno {
     private final StringProperty programaEducativo;
