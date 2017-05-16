@@ -10,6 +10,7 @@ import javafx.beans.property.StringProperty;
  */
 /*EJEMPLO DE CAMBIO SIN ACTUALIZAR*/
 //hola soy cheno
+    //Ya llegue... ManuPM
 
 public class Alumno {
     private final StringProperty programaEducativo;
