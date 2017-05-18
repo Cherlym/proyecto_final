@@ -1,4 +1,4 @@
-package com.cahd.bitacora.models.models;
+package com.isc.pf.models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

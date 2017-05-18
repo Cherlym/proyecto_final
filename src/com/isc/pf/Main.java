@@ -1,4 +1,4 @@
-package com.cahd.bitacora.models;
+package com.isc.pf;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("views/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("Views/PrimeraVista.fxml"));
+        primaryStage.setTitle("CONTROL DE CENTRO DE COMPUTO");
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
 
