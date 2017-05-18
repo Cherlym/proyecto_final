@@ -1,4 +1,4 @@
-package com.cahd.bitacora.models.Views;
+package com.isc.pf.Views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
