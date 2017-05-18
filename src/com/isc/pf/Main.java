@@ -31,13 +31,13 @@ public class Main extends Application {
 
     public static void iniciaRegistroMaestro(){
         FXMLLoader loader=new FXMLLoader();
-        loader.setLocation(Main.class.getResource("VistaRegistroMaestro.fxml"));
+        loader.setLocation(Main.class.getResource("Views/VistaRegistroMaestro.fxml"));
         AnchorPane ancontactos= null;
         try {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
             registroMaestroController controller=loader.getController();
-            controller.setStageDialogo(dialogo);
+            //controller.setStageDialog(dialogo);
             dialogo.setTitle("REGISTRO DE MAESTRO");
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);

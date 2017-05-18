@@ -10,7 +10,7 @@ public class registroMaestroController {
     private boolean onClic=false;
 
 
-    public void setStageDialogo (Stage stageDialogo){
+    public void setStageDialog (Stage stageDialogo){
         editDialog=stageDialogo;
     }
 }
