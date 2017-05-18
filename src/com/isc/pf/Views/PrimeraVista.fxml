@@ -36,7 +36,7 @@
                         <TextField fx:id="txtMatricula" layoutX="278.0" layoutY="210.0" />
                      </children>
                   </HBox>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" defaultButton="true" layoutX="246.0" layoutY="303.0" mnemonicParsing="false" onAction="#iniciar" text="Acceder" textAlignment="CENTER">
+                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" defaultButton="true" layoutX="246.0" layoutY="303.0" mnemonicParsing="false" onAction="#btnIniciar" text="Acceder" textAlignment="CENTER">
                      <font>
                         <Font name="Arial" size="15.0" />
                      </font>

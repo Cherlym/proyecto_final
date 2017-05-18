@@ -1,5 +1,6 @@
 package com.isc.pf.Views;
 
+import com.isc.pf.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -21,5 +22,10 @@ public class PrimeraVistaController {
          Aqui se validara la matricula y dependiendo de cual sea ya sea de Maestro, alumno, administrador
          sera la vista que se mostrara en la siguiente pantalla.
         */
+    }
+
+    @FXML
+    public void btnIniciar(){
+        Main.iniciaRegistroMaestro();
     }
 }
