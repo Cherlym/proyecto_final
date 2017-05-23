@@ -1,9 +1,12 @@
 package com.isc.pf.Views;
 
 import com.isc.pf.Main;
+import com.isc.pf.models.Maestro;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -17,6 +20,12 @@ public class vistaRegistroMaestroController {
     private RadioButton sala;
     @FXML
     private RadioButton pc;
+    @FXML
+    private TextField id;
+    @FXML
+    private TextField nombre;
+    @FXML
+    private TextField division;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -31,6 +40,18 @@ public class vistaRegistroMaestroController {
         sala.setToggleGroup(group);
         pc.setToggleGroup(group);
         Main.iniciaPrestamoSala();
+    }
+
+    public void detallesContacto(Maestro m){
+        if (m != null) {
+            id.setText(m.getMatricula());
+            nombre.setText(m.getNombre()+" "+m.getApPaterno()+" "+m.getApMaterno());
+            division.setText(m.getDivision());
+
+        }else{
+            id.setText("");
+        }
+
     }
 
     @FXML

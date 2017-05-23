@@ -9,8 +9,16 @@ import javafx.beans.property.StringProperty;
 public class Maestro extends Usuario {
     private final StringProperty division;
 
-    public Maestro(String id, String nombre, String apellidoPaterno, String apellidoMaterno, String division) {
-        super(id, nombre, apellidoPaterno, apellidoMaterno);
+    public Maestro(int id, String nombre, String apellidoPaterno,String matricula, String apellidoMaterno, String division) {
+        super(id, nombre, apellidoPaterno, apellidoMaterno, matricula);
         this.division=new SimpleStringProperty(division);
+    }
+
+    public String getDivision() {
+        return division.get();
+    }
+
+    public StringProperty divisionProperty() {
+        return division;
     }
 }

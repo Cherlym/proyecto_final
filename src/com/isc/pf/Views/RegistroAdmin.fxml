@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.RegistroAdminController">
    <children>
       <Label layoutX="198.0" layoutY="14.0" text="Administrar Equipo" textAlignment="CENTER" underline="true">
          <font>
@@ -39,13 +39,13 @@
                   <Insets bottom="3.0" left="4.0" right="2.0" top="1.0" />
                </GridPane.margin>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="359.0" GridPane.columnIndex="1">
+            <TextField fx:id="matricula" disable="true" editable="false" prefHeight="25.0" prefWidth="359.0" GridPane.columnIndex="1">
                <opaqueInsets>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="nombre" disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="dpto" disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="195.0" />

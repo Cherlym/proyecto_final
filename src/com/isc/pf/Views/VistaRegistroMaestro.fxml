@@ -30,9 +30,9 @@
                               </VBox>
                               <VBox layoutX="76.0" layoutY="64.0" spacing="15.0">
                                  <children>
-                                    <TextField disable="true" editable="false" layoutX="76.0" layoutY="64.0" prefHeight="25.0" prefWidth="300.0" />
-                                    <TextField disable="true" editable="false" layoutX="76.0" layoutY="103.0" />
-                                    <TextField disable="true" layoutX="76.0" layoutY="147.0" />
+                                    <TextField fx:id="id" disable="true" editable="false" layoutX="76.0" layoutY="64.0" prefHeight="25.0" prefWidth="300.0" />
+                                    <TextField fx:id="nombre" disable="true" editable="false" layoutX="76.0" layoutY="103.0" />
+                                    <TextField fx:id="division" disable="true" layoutX="76.0" layoutY="147.0" />
                                  </children>
                               </VBox>
                            </children>

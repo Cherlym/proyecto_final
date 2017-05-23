@@ -12,39 +12,28 @@ import javafx.beans.property.StringProperty;
 //hola soy cheno
     //Ya llegue... ManuPM
 
-public class Alumno {
-    private final StringProperty programaEducativo;
-    private final IntegerProperty semestre; // La propiedad se cambio de byte a integer para poder utilizar el frame
+public class Alumno extends Usuario{
+    private final String programaEducativo;
+    private final int semestre; // La propiedad se cambio de byte a integer para poder utilizar el frame
 
-    public Alumno(){
-        this(null, Integer.parseInt(null));
+    public Alumno(String id, String nombre, String apellidoPaterno, String apellidoMaterno, String programaEducativo, int semestre) {
+        super(id, nombre, apellidoPaterno, apellidoMaterno);
+        this.programaEducativo = programaEducativo;
+        this.semestre = semestre;
     }
-    public Alumno(String programaEducativo,int semestre){
-        this.programaEducativo= new SimpleStringProperty(programaEducativo);
-        this.semestre = new SimpleIntegerProperty(semestre);
+
+    public Alumno(Integer id, String apPaterno, String apMaterno, String matricula, String nombre, String programaEducativo, int semestre) {
+        super(id, apPaterno, apMaterno, matricula, nombre);
+        this.programaEducativo = programaEducativo;
+        this.semestre = semestre;
     }
+
 
     public String getProgramaEducativo() {
-        return programaEducativo.get();
-    }
-
-    public StringProperty programaEducativoProperty() {
         return programaEducativo;
     }
 
-    public void setProgramaEducativo(String programaEducativo) {
-        this.programaEducativo.set(programaEducativo);
-    }
-
     public int getSemestre() {
-        return semestre.get();
-    }
-
-    public IntegerProperty semestreProperty() {
         return semestre;
-    }
-
-    public void setSemestre(int semestre) {
-        this.semestre.set(semestre);
     }
 }

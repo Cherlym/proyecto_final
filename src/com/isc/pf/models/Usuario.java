@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Usuario {
-    private final IntegerProperty matricula;
+    private final StringProperty matricula;
     private final StringProperty nombre;
     private final IntegerProperty id;
     private final StringProperty apPaterno;
@@ -16,20 +16,20 @@ public class Usuario {
         this(null,null,null,null,null);
     }
 
-    public Usuario(Integer id,String apPaterno,String apMaterno,Integer matricula,String nombre) {
+    public Usuario(Integer id,String apPaterno,String apMaterno,String matricula,String nombre) {
         //DATOS DE PRUEVA
-        this.id=new SimpleIntegerProperty(0001);
-        this.matricula=new SimpleIntegerProperty(15050017);
+        this.id=new SimpleIntegerProperty(id);
+        this.matricula=new SimpleStringProperty(matricula);
         this.nombre= new SimpleStringProperty(nombre);
         this.apPaterno= new SimpleStringProperty(apPaterno);
         this.apMaterno=new SimpleStringProperty(apMaterno);
     }
 
-    public int getMatricula() {return matricula.get();}
+    public String getMatricula() {return matricula.get();}
 
-    public IntegerProperty matriculaProperty() {return matricula;}
+    public StringProperty matriculaProperty() {return matricula;}
 
-    public void setMatricula(int matricula) {this.matricula.set(matricula);}
+    public void setMatricula(String matricula) {this.matricula.set(matricula);}
 
     public String getNombre() {return nombre.get();}
 
