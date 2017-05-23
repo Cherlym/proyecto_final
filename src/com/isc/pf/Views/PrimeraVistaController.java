@@ -20,13 +20,11 @@ public class PrimeraVistaController {
         int matricula=0;
         matricula=Integer.parseInt(txtMatricula.getText());
 
-
         /*
          Aqui se validara la matricula y dependiendo de cual sea ya sea de Maestro, alumno, administrador
          sera la vista que se mostrara en la siguiente pantalla.
         */
     }
-
     @FXML
     public void btnIniciar(){
       if(txtMatricula.getText().length()<=4) {
