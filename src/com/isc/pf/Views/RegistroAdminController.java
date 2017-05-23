@@ -7,9 +7,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 /**
- * Created by alex_ on 18/05/2017.
+ * Created by School on 23/05/2017.
  */
-public class vistaRegistroMaestroController  {
+public class RegistroAdminController extends vistaRegistroMaestroController{
     private Stage editDialog;
     private boolean onClic=false;
 
@@ -40,7 +40,5 @@ public class vistaRegistroMaestroController  {
         pc.setToggleGroup(group);
         Main.iniciaPrestamoPc();
     }
-
-
 
 }

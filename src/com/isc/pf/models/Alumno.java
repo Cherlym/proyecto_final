@@ -31,16 +31,14 @@ public class Alumno {
     public StringProperty programaEducativoProperty() {
         return programaEducativo;
     }
-
-    public void setProgramaEducativo(String programaEducativo) {
+    public void setProgramaEducativo(String programaEducativo){
         this.programaEducativo.set(programaEducativo);
     }
 
     public int getSemestre() {
         return semestre.get();
     }
-
-    public IntegerProperty semestreProperty() {
+        public IntegerProperty semestreProperty() {
         return semestre;
     }
 
