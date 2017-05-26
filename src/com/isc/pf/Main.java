@@ -26,12 +26,12 @@ public class Main extends Application {
     private static ObservableList<Alumno> datosUsuariosAl = FXCollections.observableArrayList();
 
     public Main(){
-        datosUsuariosAl.add(new Alumno(001,"15050015","Hector Alejandro","Cheno","Guerrero","ISC",4));
+        datosUsuariosAl.add(new Alumno(001,"Cheno","Hector Alejandro","15050015","Guerrero","ISC",4));
         datosUsuariosAl.add(new Alumno(002,"15050010","Carlos Alberto","Hurtado","Dominguez","ADMN",6));
         datosUsuariosM.add(new Maestro(005,"Ponce","Mendoza","Ulises","0015","Ingenieria y Tecnologias"));
         datosUsuariosAd.add(new Administrador(003,"Vindiola","Gonzalez","009","Alma","Intendencia"));
         datosUsuariosAl.add(new Alumno(004,"15050019","Carlos Miguel","Barceló","Fimbres","ING",2));
-        System.out.println(datosUsuariosAd.get(0).getMatricula());
+        System.out.println(datosUsuariosAl.get(0).getMatricula());
     }
     public static ObservableList<Maestro> getDatosUsuariosM(){
         return datosUsuariosM;
