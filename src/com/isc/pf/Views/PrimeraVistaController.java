@@ -2,18 +2,24 @@ package com.isc.pf.Views;
 
 import com.isc.pf.Main;
 import com.isc.pf.models.Maestro;
+import com.sun.corba.se.pept.transport.Connection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.sql.SQLException;
 
 
 /**
  * Created by Marina on 09/05/2017.
  */
 public class PrimeraVistaController {
+
     @FXML
     private TextField txtMatricula;
+    @FXML
+    private Label status;
 
 
     @FXML
@@ -29,6 +35,8 @@ public class PrimeraVistaController {
     @FXML
     public void btnIniciar(){
         boolean noesta=true;
+        Main.conection();
+
       if(txtMatricula.getText().length()<=4) {
             Main.getDatosUsuariosM();
             for(int x=0;x<Main.getDatosUsuariosM().size();x++) {
@@ -69,7 +77,10 @@ public class PrimeraVistaController {
                 alerta(txtMatricula.getText());
             }
         }
+        txtMatricula.setText("");
     }
+
+
 
     public static void alerta(String mat){
         Alert alert = new Alert(Alert.AlertType.ERROR);

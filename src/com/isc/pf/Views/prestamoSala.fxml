@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -45,7 +45,7 @@
          </font>
       </Label>
       <TextField layoutX="309.0" layoutY="131.0" />
-      <TableView editable="true" layoutX="109.0" layoutY="181.0" prefHeight="142.0" prefWidth="365.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="181.0">
+      <TableView disable="true" layoutX="109.0" layoutY="181.0" prefHeight="142.0" prefWidth="365.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="181.0">
         <columns>
             <TableColumn prefWidth="103.0" text="Nombre" />
           <TableColumn minWidth="0.0" prefWidth="100.0" text="Hora de Inicio" />

@@ -1,6 +1,7 @@
 package com.isc.pf;
 
 import com.isc.pf.Views.RegistroAdminController;
+import com.isc.pf.Views.SQLConnection;
 import com.isc.pf.Views.vistaRegistroMaestroController;
 import com.isc.pf.models.Administrador;
 import com.isc.pf.models.Alumno;
@@ -17,6 +18,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main extends Application {
     static Stage myStage;
@@ -24,6 +28,8 @@ public class Main extends Application {
     private static ObservableList<Maestro> datosUsuariosM = FXCollections.observableArrayList();
     private static ObservableList<Administrador> datosUsuariosAd = FXCollections.observableArrayList();
     private static ObservableList<Alumno> datosUsuariosAl = FXCollections.observableArrayList();
+    private static Connection connection;
+
 
     public Main(){
         datosUsuariosAl.add(new Alumno(001,"Cheno","Hector Alejandro","15050015","Guerrero","ISC",4));
@@ -136,4 +142,19 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    public static void conection(){
+        connection= SQLConnection.Connector();
+        if (connection==null) System.exit(1);
+    }
+
+    public boolean isDBConnected(){
+        try {
+            return connection.isClosed();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 }
