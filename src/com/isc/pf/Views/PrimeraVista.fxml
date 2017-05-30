@@ -59,6 +59,5 @@
             </Label>
          </children>
       </VBox>
-      <Label fx:id="status" layoutX="22.0" layoutY="340.0" text="Label" />
    </children>
 </AnchorPane>

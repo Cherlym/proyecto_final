@@ -9,6 +9,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Created by alex_ on 18/05/2017.
  */
@@ -42,11 +45,11 @@ public class vistaRegistroMaestroController  {
         Main.iniciaPrestamoSala();
     }
 
-    public void detallesContacto(Maestro m){
-        if (m != null) {
-            id.setText(m.getMatricula());
-            nombre.setText(m.getNombre()+" "+m.getApPaterno()+" "+m.getApMaterno());
-            division.setText(m.getDivision());
+    public void detallesContacto(ResultSet consulta) throws SQLException{
+        if (consulta != null) {
+            id.setText(consulta.getString("matricula"));
+            nombre.setText(consulta.getString("nombre")+" "+consulta.getString("apellidop")+" "+consulta.getString("apellidom"));
+            division.setText(consulta.getString("division"));
 
         }else{
             id.setText("");

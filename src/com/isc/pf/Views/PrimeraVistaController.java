@@ -8,7 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 /**
@@ -20,6 +23,14 @@ public class PrimeraVistaController {
     private TextField txtMatricula;
     @FXML
     private Label status;
+
+    // Variables de conexion
+    private String url = "jdbc:postgresql://localhost/proyectoFInal";
+    private String us="postgres";
+    private String pass="a123";
+
+    // Objeto clase conexionMySQL e instanciar clase
+    private SQLConnection conexion = new SQLConnection();
 
 
     @FXML
@@ -33,50 +44,64 @@ public class PrimeraVistaController {
         */
     }
     @FXML
-    public void btnIniciar(){
-        boolean noesta=true;
-        Main.conection();
+    public void btnIniciar() throws SQLException{
 
-      if(txtMatricula.getText().length()<=4) {
-            Main.getDatosUsuariosM();
-            for(int x=0;x<Main.getDatosUsuariosM().size();x++) {
-                if(Main.getDatosUsuariosM().get(x).getMatricula().equals(txtMatricula.getText())){
-                    Main.iniciaRegistroMaestro(Main.getDatosUsuariosM().get(x));
-                    noesta=false;
-                }
-            }
-          if (noesta) {
-              alerta(txtMatricula.getText());
-          }
+        try{
+            boolean noesta=true;
+            Class.forName("org.postgresql.Driver");
+            java.sql.Connection con=
+                    DriverManager.getConnection("jdbc:postgresql://localhost/proyectoFInal","postgres","a123");
+            Statement estado= con.createStatement();
+            ResultSet resultado=estado.executeQuery("SELECT*FROM usuario WHERE matricula='"+ txtMatricula.getText()+"'");
+//EXPORTAR EL RESULTADO
+            while(resultado.next()){
+                if(txtMatricula.getText().length()==4) {
+                    if(resultado.getString("matricula").equals(txtMatricula.getText())){
+                        Main.iniciaRegistroMaestro(resultado);
+                        noesta=false;
+                    }else{
+                        alerta(txtMatricula.getText());
+                    }
 
-       }
-        else if(txtMatricula.getText().length()==3){
-            for(int x=0;x<Main.getDatosUsuariosAd().size();x++) {
-                if(Main.getDatosUsuariosAd().get(x).getMatricula().equals(txtMatricula.getText())){
-                    Main.iniciaRegistroAdmon(Main.getDatosUsuariosAd().get(x));
-                    noesta=false;
+                    if (noesta) {
+                        alerta(txtMatricula.getText());
+                    }
+
+                }
+                else if(txtMatricula.getText().length()==3){
+                    if(resultado.getString("matricula").equals(txtMatricula.getText())){
+                        Main.iniciaRegistroAdmon(resultado);
+                        noesta=false;
+                    }
+                    if (noesta) {
+                        alerta(txtMatricula.getText());
+                    }
+                }
+                else if(txtMatricula.getText().length()>=8&&txtMatricula.getText().length()<13){
+                    if(resultado.getString("matricula").equals(txtMatricula.getText())){
+                       // Main.iniciaRegistroAdmon(resultado);
+                        System.out.println("Si esta");
+                        noesta=false;
+                    }
+                    if (noesta) {
+                        alerta(txtMatricula.getText());
+                    }
+
+                }else {
+                    if (noesta) {
+                        alerta(txtMatricula.getText());
+                    }
                 }
             }
-          if (noesta) {
-              alerta(txtMatricula.getText());
-          }
+
+        }catch(SQLException ex){
+            System.out.println("Error de MySQL");System.out.println(ex.getMessage());
+        }catch(ClassNotFoundException err){
+            err.printStackTrace();
+        }catch(Exception err){
+            System.out.println("Se ha encontrado un error inesperado, que es: "+err.getMessage());
         }
-        else if(txtMatricula.getText().length()>=8&&txtMatricula.getText().length()<13){
-            for(int i=0;i<Main.getDatosUsuariosAl().size();i++) {
-                if (Main.getDatosUsuariosAl().get(i).getMatricula().equals(txtMatricula.getText())) {
-                    //Main.iniciaRegistroAlumno(Main.getDatosUsuariosAl().get(i));
-                    System.out.println("Si esta");
-                    noesta = false;
-                }
-            }
-              if (noesta) {
-                  alerta(txtMatricula.getText());
-              }
-        }else {
-            if (noesta) {
-                alerta(txtMatricula.getText());
-            }
-        }
+
         txtMatricula.setText("");
     }
 

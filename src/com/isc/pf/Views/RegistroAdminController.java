@@ -4,6 +4,9 @@ import com.isc.pf.models.Administrador;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Created by alex_ on 23/05/2017.
  */
@@ -15,17 +18,10 @@ public class RegistroAdminController {
     @FXML
     private TextField dpto;
 
-    public void detallesContacto(Administrador a){
-        if (a != null) {
-            matricula.setText(a.getMatricula());
-            nombre.setText(a.getNombre()+" "+a.getApPaterno()+" "+a.getApMaterno());
-            dpto.setText(a.getDpto());
-
-        }else{
-            matricula.setText("");
-            nombre.setText("");
-            dpto.setText("");
-        }
+    public void detallesContacto(ResultSet consulta) throws SQLException{
+        matricula.setText(consulta.getString("matricula"));
+        nombre.setText(consulta.getString("nombre")+" "+consulta.getString("apellidop")+" "+consulta.getString("apellidom"));
+        dpto.setText(consulta.getString("departamento"));
 
     }
 }

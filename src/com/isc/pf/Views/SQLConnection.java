@@ -1,35 +1,69 @@
 package com.isc.pf.Views;
 
-import javafx.scene.control.Alert;
+import java.sql.*;
+import javax.swing.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
-/**
- * Created by alex_ on 29/05/2017.
- */
 public class SQLConnection {
+    private static Connection conexion;
 
-    public static Connection Connector(){
+    public boolean crearConexion(String url, String us, String pass, boolean veriConexion){
+        // Variable de tipo Connection
 
-        try {
-            String url = "jdbc:postgresql://localhost/proyectoFInal";
-            String usuario="postgres";
-            String pass="a123";
+        try{
+            // Se establece la conexión con el servidor solicitando los datos
             Class.forName("org.postgresql.Driver");
-            Connection conexion= DriverManager.getConnection(url,usuario,pass);
-            return conexion;
-        }catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("BASE DE DATOS NO ENCONTRADA");
-            alert.setContentText("Error en la conexión con \n la Base de datos");
+            conexion = DriverManager.getConnection(url,us,pass);
 
-            alert.show();
+            // Opcionalmente se puede mostrar un mensaje para verificar que la conexión funciono (poniendo en true el ultimo parametro)
+            if(veriConexion == true){
+                JOptionPane.showMessageDialog(null, "Se ha realizado la conexión con éxito!","MySQL en " + url,JOptionPane.INFORMATION_MESSAGE);
+            }
+            return true;
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Se ha producido el siguiente error: " + e.getMessage(),"Erro al conectar " + url,JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public Connection obtenerConexion(){
+        return conexion;
+    }
+
+    public ResultSet ejecutarConsulta(String SQL){
+        try{
+            Statement estado = conexion.createStatement();
+            ResultSet resultado = estado.executeQuery(SQL);
+            return resultado;
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e.getMessage(), "Error de consulta SQL", JOptionPane.ERROR_MESSAGE);
             return null;
         }
+    }
 
+    public boolean actualizarRegistro(String SQL){
+        try{
+            Statement estado = conexion.createStatement();
+            estado.executeUpdate(SQL);
+            return true;
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error en la consulta: " + e.getMessage(), "Error de consulta SQL", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean cerrarConexion(){
+        try{
+            conexion.close();
+            return true;
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un error al cerrar la conexión: " + e.getMessage(), "Error al cerrar la conexión", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
 }

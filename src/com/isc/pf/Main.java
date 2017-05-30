@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main extends Application {
@@ -29,15 +30,22 @@ public class Main extends Application {
     private static ObservableList<Administrador> datosUsuariosAd = FXCollections.observableArrayList();
     private static ObservableList<Alumno> datosUsuariosAl = FXCollections.observableArrayList();
     private static Connection connection;
+    // Variables de conexion
+    private String url = "jdbc:postgresql://localhost/proyectoFInal";
+    private String us="postgres";
+    private String pass="a123";
+
+    // Objeto clase conexionMySQL e instanciar clase
+    private SQLConnection conexion = new SQLConnection();
 
 
     public Main(){
+        conexion.crearConexion(url, us, pass,false);
         datosUsuariosAl.add(new Alumno(001,"Cheno","Hector Alejandro","15050015","Guerrero","ISC",4));
         datosUsuariosAl.add(new Alumno(002,"15050010","Carlos Alberto","Hurtado","Dominguez","ADMN",6));
         datosUsuariosM.add(new Maestro(005,"Ponce","Mendoza","Ulises","0015","Ingenieria y Tecnologias"));
         datosUsuariosAd.add(new Administrador(003,"Vindiola","Gonzalez","009","Alma","Intendencia"));
         datosUsuariosAl.add(new Alumno(004,"15050019","Carlos Miguel","Barceló","Fimbres","ING",2));
-        System.out.println(datosUsuariosAl.get(0).getMatricula());
     }
     public static ObservableList<Maestro> getDatosUsuariosM(){
         return datosUsuariosM;
@@ -62,7 +70,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void iniciaRegistroMaestro(Maestro datosUsuariosM){
+    public static void iniciaRegistroMaestro(ResultSet consulta) throws SQLException{
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(Main.class.getResource("Views/VistaRegistroMaestro.fxml"));
         AnchorPane ancontactos= null;
@@ -76,13 +84,13 @@ public class Main extends Application {
             dialogo.initOwner(myStage);
             Scene escena=new Scene(ancontactos);
             dialogo.setScene(escena);
-            controller.detallesContacto(datosUsuariosM);
+            controller.detallesContacto(consulta);
             dialogo.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void iniciaRegistroAdmon(Administrador datosUsuariosAd){
+    public static void iniciaRegistroAdmon(ResultSet consulta) throws SQLException{
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(Main.class.getResource("Views/RegistroAdmin.fxml"));
 
@@ -97,8 +105,8 @@ public class Main extends Application {
             dialogo.initOwner(myStage);
             Scene escena=new Scene(ancontactos);
             dialogo.setScene(escena);
+            controller.detallesContacto(consulta);
             dialogo.showAndWait();
-            controller.detallesContacto(datosUsuariosAd);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -142,19 +150,9 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    public static void conection(){
-        connection= SQLConnection.Connector();
-        if (connection==null) System.exit(1);
-    }
 
-    public boolean isDBConnected(){
-        try {
-            return connection.isClosed();
-        }catch (SQLException e){
-            e.printStackTrace();
-            return false;
-        }
-    }
+
+
 
 
 }
