@@ -58,7 +58,7 @@
          </rowConstraints>
       </GridPane>
       <RadioButton layoutX="177.0" layoutY="212.0" mnemonicParsing="false" text="Sala" />
-      <RadioButton layoutX="382.0" layoutY="212.0" mnemonicParsing="false" text="Computadora" />
+      <RadioButton layoutX="382.0" layoutY="212.0" mnemonicParsing="false" text="Pc" />
       <Button layoutX="458.0" layoutY="361.0" mnemonicParsing="false" text="Salir" />
       <Button layoutX="512.0" layoutY="361.0" mnemonicParsing="false" text="Guardar" />
       <Pane layoutX="7.0" layoutY="244.0" prefHeight="150.0" prefWidth="356.0" />
