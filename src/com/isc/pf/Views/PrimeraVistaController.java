@@ -45,12 +45,10 @@ public class PrimeraVistaController {
     }
     @FXML
     public void btnIniciar() throws SQLException{
-
+        boolean noesta=true;
         try{
-            boolean noesta=true;
             Class.forName("org.postgresql.Driver");
-            java.sql.Connection con=
-                    DriverManager.getConnection("jdbc:postgresql://localhost/proyectoFInal","postgres","a123");
+            java.sql.Connection con=DriverManager.getConnection("jdbc:postgresql://localhost/proyectoFInal","postgres","a123");
             Statement estado= con.createStatement();
             ResultSet resultado=estado.executeQuery("SELECT*FROM usuario WHERE matricula='"+ txtMatricula.getText()+"'");
 //EXPORTAR EL RESULTADO
@@ -83,15 +81,10 @@ public class PrimeraVistaController {
                         System.out.println("Si esta");
                         noesta=false;
                     }
-                    if (noesta) {
-                        alerta(txtMatricula.getText());
-                    }
 
-                }else {
-                    if (noesta) {
-                        alerta(txtMatricula.getText());
-                    }
                 }
+
+
             }
 
         }catch(SQLException ex){
@@ -101,7 +94,9 @@ public class PrimeraVistaController {
         }catch(Exception err){
             System.out.println("Se ha encontrado un error inesperado, que es: "+err.getMessage());
         }
-
+        if (noesta){
+            alerta(txtMatricula.getText());
+        }
         txtMatricula.setText("");
     }
 
