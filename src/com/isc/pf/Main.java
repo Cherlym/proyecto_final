@@ -2,6 +2,7 @@ package com.isc.pf;
 
 import com.isc.pf.Views.RegistroAdminController;
 import com.isc.pf.Views.SQLConnection;
+import com.isc.pf.Views.prestamoSalaController;
 import com.isc.pf.Views.vistaRegistroMaestroController;
 import com.isc.pf.models.Administrador;
 import com.isc.pf.models.Alumno;
@@ -85,6 +86,8 @@ public class Main extends Application {
             Scene escena=new Scene(ancontactos);
             dialogo.setScene(escena);
             controller.detallesContacto(consulta);
+            //prestamoSalaController inicia=loader.getController();
+            //inicia.llenarTabla("SELECT * FROM prestamoSala ORDER BY disponibilidad");
             dialogo.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -112,19 +115,20 @@ public class Main extends Application {
         }
     }
 
-    public static void iniciaPrestamoSala(){
+    public static void iniciaPrestamoSala() throws SQLException{
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(Main.class.getResource("Views/prestamoSala.fxml"));
         AnchorPane ancontactos= null;
         try {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
-            vistaRegistroMaestroController controller=loader.getController();
+            prestamoSalaController controller=loader.getController();
             //controller.setStageDialog(dialogo);
             dialogo.setTitle("PRESTAMO SALA");
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);
             Scene escena=new Scene(ancontactos);
+            controller.llenarTabla("SELECT * FROM prestamoSala ORDER BY horas");
             dialogo.setScene(escena);
             dialogo.showAndWait();
         } catch (IOException e) {

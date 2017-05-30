@@ -60,19 +60,11 @@ public class PrimeraVistaController {
                     }else{
                         alerta(txtMatricula.getText());
                     }
-
-                    if (noesta) {
-                        alerta(txtMatricula.getText());
-                    }
-
                 }
                 else if(txtMatricula.getText().length()==3){
                     if(resultado.getString("matricula").equals(txtMatricula.getText())){
                         Main.iniciaRegistroAdmon(resultado);
                         noesta=false;
-                    }
-                    if (noesta) {
-                        alerta(txtMatricula.getText());
                     }
                 }
                 else if(txtMatricula.getText().length()>=8&&txtMatricula.getText().length()<13){
@@ -81,10 +73,7 @@ public class PrimeraVistaController {
                         System.out.println("Si esta");
                         noesta=false;
                     }
-
                 }
-
-
             }
 
         }catch(SQLException ex){

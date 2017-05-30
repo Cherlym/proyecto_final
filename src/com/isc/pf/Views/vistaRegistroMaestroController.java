@@ -38,7 +38,7 @@ public class vistaRegistroMaestroController  {
     }
 
     @FXML
-    public void selected(){
+    public void selected() throws SQLException{
         sala.setSelected(true);
         sala.setToggleGroup(group);
         pc.setToggleGroup(group);
