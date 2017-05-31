@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.prestamoSalaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.prestamoSalaController">
    <children>
       <Label alignment="CENTER" layoutX="32.0" layoutY="14.0" prefHeight="17.0" prefWidth="536.0" text="PRESTAMO SALA" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="14.0">
          <font>
@@ -23,11 +23,6 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <RadioButton fx:id="s1" layoutX="66.0" layoutY="96.0" mnemonicParsing="false" onAction="#selected" text="Sala 1" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="476.0" AnchorPane.topAnchor="96.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </RadioButton>
       <RadioButton fx:id="s2" layoutX="138.0" layoutY="96.0" mnemonicParsing="false" onAction="#selected1" text="Sala 2" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="404.0" AnchorPane.topAnchor="96.0">
          <font>
             <Font size="13.0" />
@@ -38,24 +33,40 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="132.0" layoutY="131.0" />
+      <TextField fx:id="de" layoutX="132.0" layoutY="131.0" />
       <Label layoutX="291.0" layoutY="131.0" text="a">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="309.0" layoutY="131.0" />
-      <TableView fx:id="tabla" layoutX="109.0" layoutY="181.0" prefHeight="142.0" prefWidth="365.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="126.0" AnchorPane.topAnchor="181.0">
+      <TextField fx:id="a" layoutX="309.0" layoutY="131.0" />
+      <RadioButton fx:id="s1" layoutX="66.0" layoutY="96.0" mnemonicParsing="false" onAction="#selected" text="Sala 1" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="476.0" AnchorPane.topAnchor="96.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </RadioButton>
+      <TableView fx:id="tabla" layoutX="68.0" layoutY="218.0" prefHeight="142.0" prefWidth="392.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="218.0">
         <columns>
             <TableColumn fx:id="campoNombre" prefWidth="103.0" text="Nombre" />
           <TableColumn fx:id="horaE" minWidth="0.0" prefWidth="100.0" text="Hora de Inicio" />
             <TableColumn fx:id="horaS" prefWidth="116.0" text="Hora de Salida" />
+            <TableColumn fx:id="fecha" prefWidth="116.0" text="Fecha" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="343.0" layoutY="338.0" mnemonicParsing="false" text="Registrar" AnchorPane.bottomAnchor="37.0" />
-      <Button layoutX="412.0" layoutY="338.0" mnemonicParsing="false" text="Cancelar" AnchorPane.bottomAnchor="37.0" />
+      <HBox layoutX="343.0" layoutY="374.0" spacing="20.0">
+         <children>
+            <Button layoutX="343.0" layoutY="338.0" mnemonicParsing="false" onAction="#registrar" text="Registrar" AnchorPane.bottomAnchor="37.0" />
+            <Button layoutX="412.0" layoutY="338.0" mnemonicParsing="false" onAction="#cancelarr" text="Cancelar" AnchorPane.bottomAnchor="37.0" />
+         </children>
+      </HBox>
+      <Label layoutX="153.0" layoutY="174.0" text="Fecha:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dp" layoutX="233.0" layoutY="174.0" />
    </children>
 </AnchorPane>

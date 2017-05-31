@@ -43,15 +43,15 @@ public class SQLConnection {
         }
     }
 
-    public boolean actualizarRegistro(String SQL){
+    public Statement actualizarRegistro(String SQL){
         try{
             Statement estado = conexion.createStatement();
             estado.executeUpdate(SQL);
-            return true;
+            return estado;
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error en la consulta: " + e.getMessage(), "Error de consulta SQL", JOptionPane.ERROR_MESSAGE);
-            return false;
+            return null;
         }
     }
 

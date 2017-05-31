@@ -1,16 +1,15 @@
 package com.isc.pf.Views;
 
-import com.isc.pf.Main;
+import com.isc.pf.models.VistaTable;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 /**
  * Created by alex_ on 30/05/2017.
@@ -21,59 +20,67 @@ public class prestamoSalaController {
     @FXML
     private RadioButton s2;
     @FXML
-    private TableView tabla;
+    private TableView<VistaTable> tabla;
 
     @FXML
-    private TableColumn campoNombre;
+    private TableColumn<VistaTable,String> campoNombre=new TableColumn<>("Nombre");
 
     @FXML
-    TableColumn horaS;
+    private TableColumn<VistaTable,String>  horaS=new TableColumn<>("Hora Entrada");
 
     @FXML
-    TableColumn horaE;
+    private TableColumn<VistaTable,String>  horaE=new TableColumn<>("Hora Salida");
+
+    @FXML
+    private TableColumn<VistaTable,String>  fecha=new TableColumn<>("Fecha");
+
+    @FXML
+    private DatePicker dp;
+
+    @FXML
+    private TextField de;
+
+    @FXML
+    private TextField a;
+
+
+
+    private int valor=0;
+    private String matr="";
+    private Stage editDialog;
+    private boolean onClic=false;
+
 
     final ToggleGroup group = new ToggleGroup();
-
-
-    // Objeto clase conexionMySQL e instanciar clase
     private SQLConnection conexion = new SQLConnection();
 
-    // Crear un modelo del JTable
-    private DefaultTableModel modelo;
-
-    /**
-     * Creates new form milancorp
-     */
-    public void Main() throws SQLException{
-       // modelo = (javax.swing.table.DefaultTableModel) tabla.getModel();
-        //conectar();
-
-        // Llenar los datos de la tabla
-        llenarTabla("SELECT * FROM prestamoSala ORDER BY disponibilidad");
-
-        // Cerrar conexion
-        conexion.cerrarConexion();
+    public void setStageDialogo2 (Stage stageDialogo){
+        editDialog=stageDialogo;
     }
+
 
     public void conectar(){
         conexion.crearConexion("jdbc:postgresql://localhost/proyectoFInal","postgres","a123",false);
     }
     public void llenarTabla(String SQL) throws SQLException {
         conectar();
-        // Iniciar registros de la tabla
         ResultSet consulta = conexion.ejecutarConsulta(SQL);
+
+        campoNombre.setCellValueFactory(new PropertyValueFactory<VistaTable,String>("nombre"));
+        horaE.setCellValueFactory(new PropertyValueFactory<VistaTable,String>("horae"));
+        horaS.setCellValueFactory(new PropertyValueFactory<VistaTable,String>("horas"));
+        fecha.setCellValueFactory(new PropertyValueFactory<VistaTable,String>("fecha"));
+
         try{
             while (consulta.next()) {
-                consulta.getString("ns");
-                consulta.getString("horas");
+                String nf=consulta.getString("descripcion");
+                String he=consulta.getString("horae");
+                String hs=consulta.getString("horas");
+                String fecha=consulta.getString("fecha");
 
-                String[] registros = {
-                        consulta.getString("ns"),
-                        consulta.getString("horas"),
+                VistaTable vt=new VistaTable(nf,he,hs, fecha);
 
-                };
-
-                modelo.addRow(registros);
+                tabla.getItems().addAll(vt);
 
             }
 
@@ -87,11 +94,46 @@ public class prestamoSalaController {
         s1.setSelected(true);
         s1.setToggleGroup(group);
         s2.setToggleGroup(group);
+        valor=1;
     }
     @FXML
     public void selected1(){
         s2.setSelected(true);
         s2.setToggleGroup(group);
         s1.setToggleGroup(group);
+        valor=2;
+    }
+
+    @FXML
+    public void registrar(){
+        conectar();
+        String ld=dp.getValue().toString();
+       conexion.actualizarRegistro("insert into prestamoSala values("+valor+",'"+de.getText()+"','"+a.getText()+"','"+ld+"','"+matr+"')");
+        alerta(dp.getValue(),de.getText(),a.getText());
+        okClics();
+    }
+
+    public void obtenerId(String id){
+        matr=id;
+    }
+
+    private void okClics(){
+        onClic = true;
+        if (onClic) {
+            editDialog.close();
+        }
+
+    }
+    public static void alerta(LocalDate ld, String de, String a){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("IMFORMACION");
+        alert.setHeaderText("SE HA REGISTRADO SU RESERACION");
+        alert.setContentText("Se ha reservado la sala el dia "+ld+" \nde "+de+" a "+a+".");
+
+        alert.show();
+    }
+    @FXML
+    public void cancelarr(){
+        okClics();
     }
 }

@@ -42,7 +42,7 @@ public class vistaRegistroMaestroController  {
         sala.setSelected(true);
         sala.setToggleGroup(group);
         pc.setToggleGroup(group);
-        Main.iniciaPrestamoSala();
+        Main.iniciaPrestamoSala(id.getText());
     }
 
     public void detallesContacto(ResultSet consulta) throws SQLException{
