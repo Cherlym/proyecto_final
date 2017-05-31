@@ -106,11 +106,20 @@ public class PrestamoSalaController {
 
     @FXML
     public void registrar(){
-        conectar();
         String ld=dp.getValue().toString();
-        conexion.actualizarRegistro("insert into prestamoSala values("+valor+",'"+de.getText()+"','"+a.getText()+"','"+ld+"','"+matr+"')");
-        alerta(dp.getValue(),de.getText(),a.getText());
-        okClics();
+        if (valor==0||de.getText().equals("")||a.getText().equals("")||ld.equals("")||matr.equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("FALTA INFORMACION");
+            alert.setContentText("Falta informacion por completar,\n favor de llenar todos los campos.");
+            alert.show();
+
+        }else {
+            conectar();
+            conexion.actualizarRegistro("insert into prestamoSala values(" + valor + ",'" + de.getText() + "','" + a.getText() + "','" + ld + "','" + matr + "')");
+            alerta(dp.getValue(), de.getText(), a.getText());
+            okClics();
+        }
     }
 
     public void obtenerId(String id){

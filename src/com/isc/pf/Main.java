@@ -105,7 +105,7 @@ public class Main extends Application {
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);
             Scene escena=new Scene(ancontactos);
-            controller.llenarTabla("select s.descripcion, ps.horae, ps.horas,ps.fecha from sala s inner join prestamoSala ps on s.nosala=ps.ns");
+            controller.llenarTabla("select s.descripcion, ps.horae, ps.horas,ps.fecha from sala s inner join prestamoSala ps on s.nosala=ps.ns order by ps.fecha, ps.horas");
             controller.obtenerId(id);
             dialogo.setScene(escena);
             dialogo.show();
