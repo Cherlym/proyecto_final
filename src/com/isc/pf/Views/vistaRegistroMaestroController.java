@@ -73,7 +73,4 @@ public class vistaRegistroMaestroController  {
         pc.setToggleGroup(group);
         Main.iniciaPrestamoPc();
     }
-
-
-
 }
