@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.RegistroAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.RegistroAdminController">
    <children>
       <Label layoutX="198.0" layoutY="14.0" text="Administrar Equipo" textAlignment="CENTER" underline="true">
          <font>
@@ -57,10 +57,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <RadioButton layoutX="177.0" layoutY="212.0" mnemonicParsing="false" text="Sala" />
-      <RadioButton layoutX="382.0" layoutY="212.0" mnemonicParsing="false" text="Computadora" />
-      <Button layoutX="458.0" layoutY="361.0" mnemonicParsing="false" text="Salir" />
-      <Button layoutX="512.0" layoutY="361.0" mnemonicParsing="false" text="Guardar" />
+      <HBox layoutX="259.0" layoutY="183.0" spacing="50.0">
+         <children>
+            <RadioButton fx:id="pc" layoutX="180.0" layoutY="192.0" mnemonicParsing="false" onAction="#selected1" text="PC" />
+            <RadioButton fx:id="sala" layoutX="420.0" layoutY="192.0" mnemonicParsing="false" onAction="#selected" text="Sala" />
+         </children>
+      </HBox>
+      <Button layoutX="532.0" layoutY="361.0" mnemonicParsing="false" onAction="#okClic" text="Salir" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="29.0" />
       <Pane layoutX="7.0" layoutY="244.0" prefHeight="150.0" prefWidth="356.0" />
    </children>
 </AnchorPane>

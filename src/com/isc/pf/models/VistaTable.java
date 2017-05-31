@@ -1,5 +1,7 @@
 package com.isc.pf.models;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by alex_ on 31/05/2017.
  */
@@ -26,5 +28,10 @@ public class VistaTable {
 
     public String getHoras() {
         return horas;
+    }
+
+    public String getFecha() {
+
+        return fecha;
     }
 }

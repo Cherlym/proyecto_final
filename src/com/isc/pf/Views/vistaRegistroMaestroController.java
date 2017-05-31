@@ -45,6 +45,15 @@ public class vistaRegistroMaestroController  {
         Main.iniciaPrestamoSala(id.getText());
     }
 
+    @FXML
+    private void okClic(){
+        onClic = true;
+        if (onClic) {
+            editDialog.hide();
+        }
+
+    }
+
     public void detallesContacto(ResultSet consulta) throws SQLException{
         if (consulta != null) {
             id.setText(consulta.getString("matricula"));

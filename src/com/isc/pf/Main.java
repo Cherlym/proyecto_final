@@ -56,7 +56,7 @@ public class Main extends Application {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
             vistaRegistroMaestroController controller=loader.getController();
-            //controller.setStageDialog(dialogo);
+            controller.setStageDialog(dialogo);
             dialogo.setTitle("REGISTRO DE MAESTRO");
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);
@@ -79,7 +79,7 @@ public class Main extends Application {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
             RegistroAdminController controller=loader.getController();
-            //controller.setStageDialog(dialogo);
+            controller.setStageDialog(dialogo);
             dialogo.setTitle("REGISTRO DE ADMINISTRADOR");
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);
@@ -105,7 +105,7 @@ public class Main extends Application {
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);
             Scene escena=new Scene(ancontactos);
-            controller.llenarTabla("select s.descripcion, ps.horae, ps.horas from sala s inner join prestamoSala ps on s.nosala=ps.ns");
+            controller.llenarTabla("select s.descripcion, ps.horae, ps.horas,ps.fecha from sala s inner join prestamoSala ps on s.nosala=ps.ns");
             controller.obtenerId(id);
             dialogo.setScene(escena);
             dialogo.show();

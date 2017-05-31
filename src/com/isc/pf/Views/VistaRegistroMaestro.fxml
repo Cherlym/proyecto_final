@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.vistaRegistroMaestroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="263.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.vistaRegistroMaestroController">
    <children>
       <VBox alignment="CENTER" layoutX="120.0" layoutY="14.0" spacing="30.0">
          <children>
@@ -52,7 +52,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button alignment="BOTTOM_LEFT" layoutX="547.0" layoutY="417.0" mnemonicParsing="false" text="Salir" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <Button alignment="BOTTOM_LEFT" layoutX="547.0" layoutY="417.0" mnemonicParsing="false" onAction="#okClic" text="Salir" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <opaqueInsets>
             <Insets bottom="15.0" left="15.0" />
          </opaqueInsets>

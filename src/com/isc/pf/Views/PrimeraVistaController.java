@@ -69,8 +69,7 @@ public class PrimeraVistaController {
                 }
                 else if(txtMatricula.getText().length()>=8&&txtMatricula.getText().length()<13){
                     if(resultado.getString("matricula").equals(txtMatricula.getText())){
-                       // Main.iniciaRegistroAdmon(resultado);
-                        System.out.println("Si esta");
+                        Main.iniciaPrestamoPc();
                         noesta=false;
                     }
                 }

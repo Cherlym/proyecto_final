@@ -78,7 +78,7 @@ public class prestamoSalaController {
                 String hs=consulta.getString("horas");
                 String fecha=consulta.getString("fecha");
 
-                VistaTable vt=new VistaTable(nf,he,hs, fecha);
+                VistaTable vt=new VistaTable(nf,he,hs,fecha);
 
                 tabla.getItems().addAll(vt);
 
@@ -127,7 +127,7 @@ public class prestamoSalaController {
     public static void alerta(LocalDate ld, String de, String a){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("IMFORMACION");
-        alert.setHeaderText("SE HA REGISTRADO SU RESERACION");
+        alert.setHeaderText("SE HA REGISTRADO SU RESERVACION");
         alert.setContentText("Se ha reservado la sala el dia "+ld+" \nde "+de+" a "+a+".");
 
         alert.show();
@@ -136,4 +136,5 @@ public class prestamoSalaController {
     public void cancelarr(){
         okClics();
     }
+
 }
