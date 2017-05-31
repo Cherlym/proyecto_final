@@ -1,8 +1,8 @@
 package com.isc.pf;
 
+import com.isc.pf.Views.PrestamoSalaController;
 import com.isc.pf.Views.RegistroAdminController;
 import com.isc.pf.Views.SQLConnection;
-import com.isc.pf.Views.prestamoSalaController;
 import com.isc.pf.Views.vistaRegistroMaestroController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -99,7 +99,7 @@ public class Main extends Application {
         try {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
-            prestamoSalaController controller=loader.getController();
+            PrestamoSalaController controller=loader.getController();
             controller.setStageDialogo2(dialogo);
             dialogo.setTitle("PRESTAMO SALA");
             dialogo.initModality(Modality.WINDOW_MODAL);
