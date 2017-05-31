@@ -31,9 +31,4 @@ public class VistaPrestamoPCController {
     horario.setText(consulta.getString("horario"));
     }
 
-
-
-
-
-
 }

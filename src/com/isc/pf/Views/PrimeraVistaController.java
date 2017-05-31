@@ -32,7 +32,6 @@ public class PrimeraVistaController {
     // Objeto clase conexionMySQL e instanciar clase
     private SQLConnection conexion = new SQLConnection();
 
-
     @FXML
     public void iniciar(){
         int matricula=0;
@@ -99,8 +98,6 @@ public class PrimeraVistaController {
         }
         txtMatricula.setText("");
     }
-
-
 
     public static void alerta(String mat){
         Alert alert = new Alert(Alert.AlertType.ERROR);
