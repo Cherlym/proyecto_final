@@ -1,5 +1,6 @@
 package com.isc.pf.Views;
 
+import com.isc.pf.Main;
 import com.isc.pf.models.VistaTable;
 import com.isc.pf.models.ppc;
 import javafx.fxml.FXML;
@@ -79,6 +80,7 @@ public class VistaPrestamoPCController {
         onClic = true;
         if (onClic) {
             editDialog.hide();
+            Main.iniciar();
         }
 
     }

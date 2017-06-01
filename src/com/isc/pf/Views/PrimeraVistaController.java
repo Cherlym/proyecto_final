@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,10 +25,25 @@ public class PrimeraVistaController {
     @FXML
     private Label status;
 
+    private Stage editDialog;
+    private boolean onClic=false;
+
     // Variables de conexion
     private String url = "jdbc:postgresql://localhost/proyectoFInal";
     private String us="postgres";
     private String pass="a123";
+
+    private void okClics(){
+        onClic = true;
+        if (onClic) {
+            editDialog.close();
+        }
+
+    }
+
+    public void setStageDialogo2 (Stage stageDialogo){
+        editDialog=stageDialogo;
+    }
 
     // Objeto clase conexionMySQL e instanciar clase
     private SQLConnection conexion = new SQLConnection();
@@ -74,6 +90,7 @@ public class PrimeraVistaController {
                 }
             }
 
+
         }catch(SQLException ex){
             System.out.println("Error de MySQL");System.out.println(ex.getMessage());
         }catch(ClassNotFoundException err){
@@ -85,6 +102,9 @@ public class PrimeraVistaController {
             alerta(txtMatricula.getText());
         }
         txtMatricula.setText("");
+        if (!noesta) {
+            okClics();
+        }
     }
 
     public static void alerta(String mat){

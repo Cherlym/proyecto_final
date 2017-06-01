@@ -32,14 +32,36 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Views/PrimeraVista.fxml"));
+        /*Parent root = FXMLLoader.load(getClass().getResource("Views/PrimeraVista.fxml"));
         primaryStage.setTitle("CONTROL DE CENTRO DE COMPUTO");
+        vistaRegistroMaestroController controller=loader.getController();
         primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.show();
+        primaryStage.show();*/
+        iniciar();
     }
 
 
-
+    public static void iniciar(){
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(Main.class.getResource("Views/PrimeraVista.fxml"));
+        AnchorPane ancontactos= null;
+        try {
+            ancontactos = (AnchorPane) loader.load();
+            Stage dialogo=new Stage();
+            PrimeraVistaController controller=loader.getController();
+            controller.setStageDialogo2(dialogo);
+            dialogo.setTitle("CONTROL DE CENTRO DE COMPUTO");
+            dialogo.initModality(Modality.WINDOW_MODAL);
+            dialogo.initOwner(myStage);
+            Scene escena=new Scene(ancontactos);
+            dialogo.setScene(escena);
+            //prestamoSalaController inicia=loader.getController();
+            //inicia.llenarTabla("SELECT * FROM prestamoSala ORDER BY disponibilidad");
+            dialogo.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);

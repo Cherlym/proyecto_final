@@ -50,8 +50,15 @@ public class vistaRegistroMaestroController  {
         onClic = true;
         if (onClic) {
             editDialog.hide();
+            Main.iniciar();
         }
 
+    }
+    public void oks(){
+        onClic = true;
+        if (onClic) {
+            editDialog.hide();
+        }
     }
 
     public void detallesContacto(ResultSet consulta) throws SQLException{

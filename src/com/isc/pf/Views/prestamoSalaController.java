@@ -58,6 +58,12 @@ public class PrestamoSalaController {
         editDialog=stageDialogo;
     }
 
+    public void oks(){
+        onClic = true;
+        if (onClic) {
+            editDialog.hide();
+        }
+    }
 
     public void conectar(){
         conexion.crearConexion("jdbc:postgresql://localhost/proyectoFInal","postgres","a123",false);
@@ -108,11 +114,12 @@ public class PrestamoSalaController {
     public void registrar(){
         String ld=dp.getValue().toString();
         if (valor==0||de.getText().equals("")||a.getText().equals("")||ld.equals("")||matr.equals("")){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ALERTA");
             alert.setHeaderText("FALTA INFORMACION");
             alert.setContentText("Falta informacion por completar,\n favor de llenar todos los campos.");
             alert.show();
+            oks();
 
         }else {
             conectar();

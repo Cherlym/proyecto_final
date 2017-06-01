@@ -55,6 +55,7 @@ public class RegistroAdminController {
         onClic = true;
         if (onClic) {
             editDialog.hide();
+            Main.iniciar();
         }
 
     }
