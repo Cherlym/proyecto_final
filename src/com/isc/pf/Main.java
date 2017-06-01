@@ -9,8 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Main extends Application {
     static Stage myStage;
@@ -136,6 +138,9 @@ public class Main extends Application {
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(Main.class.getResource("Views/VistaPrestamoPC.fxml"));
         AnchorPane ancontactos= null;
+        java.sql.Connection con= DriverManager.getConnection("jdbc:postgresql://localhost/proyectoFInal","postgres","a123");
+        Statement estado= con.createStatement();
+        ResultSet resultado=estado.executeQuery("SELECT*FROM usuario WHERE matricula='"+ mats+"'");
         try {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
@@ -143,6 +148,8 @@ public class Main extends Application {
             controller.setStageDialog(dialogo);
             controller.setTitulo(mats);
             controller.detallesContacto("select nopc,disponibilidad from pc order by disponibilidad");
+            while (resultado.next())
+            controller.detallesUsuario(resultado);
             dialogo.setTitle("PRESTAMO PC");
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);

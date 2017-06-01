@@ -27,7 +27,17 @@ public class VistaPrestamoPCController {
     @FXML
     private TextField mat;
     @FXML
+    private TextField he;
+    @FXML
+    private TextField hs;
+    @FXML
+    private TextField txtNombre;
+    @FXML
     TextField disp;
+    @FXML
+    private Label a1;
+    @FXML
+    private Label a2;
     @FXML
     private TableColumn<ppc,String> nopc=new TableColumn<>("nopc");
     @FXML
@@ -45,7 +55,36 @@ public class VistaPrestamoPCController {
         if (contactoSelected>=0){
             pc.setText(tabla.getItems().get(contactoSelected).getNopc());
         }
-        //tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> detallesContacto(newValue));
+        tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> detallesContacto1(newValue));
+
+       /* ppc p= tabla.getSelectionModel().getSelectedItem();
+                pc.setText(p.getNopc());
+                disp.setText(p.getDisponibilidad());*/
+    }
+    public void detallesContacto1(ppc c){
+        if (c != null) {
+            pc.setText(c.getNopc());
+            disp.setText(c.getDisponibilidad());
+            if (disp.getText().equals("En reparacion")||disp.getText().equals("No Disponible")){
+                he.setVisible(false);
+                hs.setVisible(false);
+                a1.setVisible(false);
+                a2.setVisible(false);
+                registrar.setVisible(false);
+
+            }else{
+                he.setVisible(true);
+                hs.setVisible(true);
+                a1.setVisible(true);
+                a2.setVisible(true);
+                registrar.setVisible(true);
+            }
+
+        }else{
+            pc.setText("");
+            disp.setText("");
+        }
+
     }
 
     public void setStageDialog (Stage stageDialogo){
@@ -99,13 +138,47 @@ public class VistaPrestamoPCController {
         }
 
     }
+    private void okClics()throws SQLException{
+        onClic = true;
+        if (onClic) {
+            editDialog.hide();
+        }
+    }
 
+    @FXML
+    private void Registrar() throws SQLException{
+        conectar();
+        conexion.actualizarRegistro("update pc set disponibilidad='No Disponible' where pc.nopc="+pc.getText()+"");
+        conexion.actualizarRegistro("insert into prestamopc values("+pc.getText()+",'"+he.getText()+"','"+hs.getText()+"','"+mat.getText()+"')");
+        okClics();
+        Main.iniciar();
+        alerta(pc.getText(),he.getText(),hs.getText());
+    }
 
+    public static void alerta(String ld, String de, String a){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMACION");
+        alert.setHeaderText("SE HA REGISTRADO SU RESERVACION");
+        alert.setContentText("Se ha reservado el equipo No. "+ld+" \nde "+de+" a "+a+".");
+
+        alert.show();
+    }
     /*public void campos(){
         int contactoSelected = tabla.getSelectionModel().getSelectedIndex();
         if (contactoSelected>=0){
             pc.setText(tabla.getItems().get(contactoSelected).getNopc());
         }
         }*/
+
+    public void detallesUsuario(ResultSet consulta) throws SQLException{
+        if (consulta != null) {
+            mat.setText(consulta.getString("matricula"));
+            txtNombre.setText(consulta.getString("nombre")+" "+consulta.getString("apellidop")+" "+consulta.getString("apellidom"));
+
+        }else{
+            mat.setText("");
+        }
+
+    }
 
 }
