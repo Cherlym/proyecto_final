@@ -1,9 +1,6 @@
 package com.isc.pf;
 
-import com.isc.pf.Views.PrestamoSalaController;
-import com.isc.pf.Views.RegistroAdminController;
-import com.isc.pf.Views.SQLConnection;
-import com.isc.pf.Views.vistaRegistroMaestroController;
+import com.isc.pf.Views.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -113,15 +110,17 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    public static void iniciaPrestamoPc(){
+    public static void iniciaPrestamoPc(String mats) throws SQLException{
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(Main.class.getResource("Views/VistaPrestamoPC.fxml"));
         AnchorPane ancontactos= null;
         try {
             ancontactos = (AnchorPane) loader.load();
             Stage dialogo=new Stage();
-            vistaRegistroMaestroController controller=loader.getController();
-            //controller.setStageDialog(dialogo);
+            VistaPrestamoPCController controller=loader.getController();
+            controller.setStageDialog(dialogo);
+            controller.setTitulo(mats);
+            controller.detallesContacto("select nopc,disponibilidad from pc order by disponibilidad");
             dialogo.setTitle("PRESTAMO PC");
             dialogo.initModality(Modality.WINDOW_MODAL);
             dialogo.initOwner(myStage);

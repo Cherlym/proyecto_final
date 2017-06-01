@@ -7,16 +7,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isc.pf.Views.VistaPrestamoPCController">
     <children>
         <SplitPane dividerPositions="0.3131548311990687" prefHeight="412.0" prefWidth="861.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <TableView prefHeight="408.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tabla" prefHeight="408.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn prefWidth="70.0" text="PC" />
-                                <TableColumn prefWidth="169.0" text="Disponibilidad" />
+                                <TableColumn fx:id="nopc" prefWidth="70.0" text="PC" />
+                                <TableColumn fx:id="disponibilidad" prefWidth="169.0" text="Disponibilidad" />
                             </columns>
                         </TableView>
                         <ScrollBar layoutX="241.0" layoutY="3.0" orientation="VERTICAL" prefHeight="408.0" prefWidth="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -69,7 +69,7 @@
                               <HBox alignment="CENTER" layoutX="249.0" layoutY="261.0" prefHeight="39.0" prefWidth="256.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="25.0">
                                   <children>
                                       <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Registrar" />
-                                      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancelar" />
+                                      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#okClic" prefHeight="25.0" prefWidth="120.0" text="Cancelar" />
                                   </children>
                               </HBox>
                               <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="10.0" prefHeight="56.0" prefWidth="526.0" text="PRESTAMO PC" textOverrun="CLIP" wrapText="true">
@@ -84,7 +84,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <TextField layoutX="171.0" layoutY="85.0" prefHeight="25.0" prefWidth="236.0" />
+                              <TextField fx:id="mat" layoutX="171.0" layoutY="85.0" prefHeight="25.0" prefWidth="236.0" />
                            </children>
                         </HBox>
                      </children>

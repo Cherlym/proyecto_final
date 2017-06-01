@@ -59,11 +59,11 @@ public class RegistroAdminController {
 
     }
     @FXML
-    public void selected1(){
+    public void selected1()throws SQLException{
         pc.setSelected(true);
         sala.setToggleGroup(group);
         pc.setToggleGroup(group);
-        Main.iniciaPrestamoPc();
+        Main.iniciaPrestamoPc(matricula.getText());
     }
 
     public void detallesContacto(ResultSet consulta) throws SQLException{

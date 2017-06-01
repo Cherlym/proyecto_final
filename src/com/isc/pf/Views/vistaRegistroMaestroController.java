@@ -67,10 +67,10 @@ public class vistaRegistroMaestroController  {
     }
 
     @FXML
-    public void selected1(){
+    public void selected1() throws SQLException{
         pc.setSelected(true);
         sala.setToggleGroup(group);
         pc.setToggleGroup(group);
-        Main.iniciaPrestamoPc();
+        Main.iniciaPrestamoPc(id.getText());
     }
 }
