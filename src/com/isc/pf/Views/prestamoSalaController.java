@@ -1,5 +1,6 @@
 package com.isc.pf.Views;
 
+import com.isc.pf.Main;
 import com.isc.pf.models.VistaTable;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -7,8 +8,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 /**
@@ -149,7 +152,8 @@ public class PrestamoSalaController {
         alert.show();
     }
     @FXML
-    public void cancelarr(){
+    public void cancelarr() throws SQLException{
         okClics();
+
     }
 }

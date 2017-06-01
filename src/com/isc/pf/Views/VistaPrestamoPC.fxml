@@ -48,8 +48,8 @@
                                                     <Font size="17.0" />
                                                 </font>
                                             </Label>
-                                    <TextField GridPane.columnIndex="1" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="pc" GridPane.columnIndex="1" />
+                                    <TextField fx:id="disp" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         </children>
                                     </GridPane>
                               <HBox alignment="CENTER" layoutX="50.0" layoutY="190.0" spacing="10.0" VBox.vgrow="ALWAYS">

@@ -9,8 +9,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by School on 29/05/2017.
@@ -24,9 +26,8 @@ public class VistaPrestamoPCController {
     private TextField pc;
     @FXML
     private TextField mat;
-
     @FXML
-    TextField horario;
+    TextField disp;
     @FXML
     private TableColumn<ppc,String> nopc=new TableColumn<>("nopc");
     @FXML
@@ -37,6 +38,16 @@ public class VistaPrestamoPCController {
     private Stage editDialog;
     private boolean onClic=false;
     private SQLConnection conexion = new SQLConnection();
+
+    @FXML
+    public void iniciar(){
+        int contactoSelected = tabla.getSelectionModel().getSelectedIndex();
+        if (contactoSelected>=0){
+            pc.setText(tabla.getItems().get(contactoSelected).getNopc());
+        }
+        //tabla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> detallesContacto(newValue));
+    }
+
     public void setStageDialog (Stage stageDialogo){
         editDialog=stageDialogo;
     }
@@ -73,16 +84,28 @@ public class VistaPrestamoPCController {
 
     public void setTitulo(String mats){
         mat.setText(mats);
+
     }
 
+
     @FXML
-    private void okClic(){
+    private void okClic()throws SQLException{
         onClic = true;
         if (onClic) {
             editDialog.hide();
-            Main.iniciar();
+            if(mat.getLength()>=8){
+                Main.iniciar();
+            }
         }
 
     }
+
+
+    /*public void campos(){
+        int contactoSelected = tabla.getSelectionModel().getSelectedIndex();
+        if (contactoSelected>=0){
+            pc.setText(tabla.getItems().get(contactoSelected).getNopc());
+        }
+        }*/
 
 }

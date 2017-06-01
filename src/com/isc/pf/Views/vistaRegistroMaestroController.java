@@ -9,8 +9,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by alex_ on 18/05/2017.
@@ -46,7 +48,7 @@ public class vistaRegistroMaestroController  {
     }
 
     @FXML
-    private void okClic(){
+    private void okClic()throws SQLException{
         onClic = true;
         if (onClic) {
             editDialog.hide();

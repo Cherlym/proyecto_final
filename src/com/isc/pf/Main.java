@@ -148,6 +148,7 @@ public class Main extends Application {
             dialogo.initOwner(myStage);
             Scene escena=new Scene(ancontactos);
             dialogo.setScene(escena);
+            controller.iniciar();
             dialogo.show();
         } catch (IOException e) {
             e.printStackTrace();
